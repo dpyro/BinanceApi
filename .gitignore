@@ -1,0 +1,7 @@
+.build
+.DS_Store
+Carthage
+BinanceApi.xcodeproj/xcuserdata
+BinanceApi.xcodeproj/project.xcworkspace/xcuserdata
+*.framework.zip
+*.dSYM
