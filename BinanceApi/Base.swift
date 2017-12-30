@@ -92,7 +92,7 @@ public enum BinanceCandlesticksInterval: String, Codable {
 }
 
 public struct BinanceApi {
-    static let baseUrl = URL(string: "https://www.binance.com/api/")!
+    static let baseUrl = URL(string: "https://api.binance.com/api/")!
 
     let session: SessionManager
 
@@ -190,7 +190,7 @@ public protocol BinanceRequest: Encodable, URLConvertible, URLRequestConvertible
 
 public extension BinanceRequest {
     public func asURL() throws -> URL {
-        let baseUrl = URL(string: "https://www.binance.com/api/")!
+        let baseUrl = URL(string: "https://api.binance.com/api/")!
         return URL(string: Self.endpoint, relativeTo: baseUrl)!
     }
 
