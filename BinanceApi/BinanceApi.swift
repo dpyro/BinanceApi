@@ -13,7 +13,7 @@ import Alamofire
 public struct BinancePingRequest: BinanceRequest, Codable {
     public static let endpoint = "v1/ping"
     public static let method: HTTPMethod = .get
-
+    
     public struct Response: Codable {}
 }
 
@@ -199,11 +199,13 @@ public struct Binance24HourTickerRequest: BinanceRequest, Codable {
 
 /// Latest `price` for all `symbol`s.
 public struct BinanceAllPricesRequest: BinanceRequest, Codable {
-    public static let endpoint = "v1/ticker/allPrices"
+    public static let endpoint = "v3/ticker/price"
     public static let method: HTTPMethod = .get
 
+    public init () {}
+    
     public struct Response: Decodable {
-        let elements: [String: Decimal]
+        public let elements: [String: Decimal]
 
         public init(from decoder: Decoder) throws {
             var dict = [String: Decimal]()
