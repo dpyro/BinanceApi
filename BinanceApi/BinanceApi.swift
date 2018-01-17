@@ -176,6 +176,10 @@ public struct Binance24HourTickerRequest: BinanceRequest, Codable {
     public static let endpoint = "v1/ticker/24hr"
     public static let method: HTTPMethod = .get
 
+    public init(symbol: String) {
+        self.symbol = symbol
+    }
+    
     public let symbol: String
 
     public struct Response: Codable {
@@ -189,6 +193,8 @@ public struct Binance24HourTickerRequest: BinanceRequest, Codable {
         public let openPrice: Decimal
         public let highPrice: Decimal
         public let lowPrice: Decimal
+        public let volume: Decimal
+        public let quoteVolume: Decimal
         public let openTime: Date
         public let closeTime: Date
         public let firstId: UInt64
