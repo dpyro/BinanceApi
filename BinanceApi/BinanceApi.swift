@@ -14,6 +14,8 @@ public struct BinancePingRequest: BinanceRequest, Codable {
     public static let endpoint = "v1/ping"
     public static let method: HTTPMethod = .get
     
+    public init () {}
+    
     public struct Response: Codable {}
 }
 
@@ -22,6 +24,8 @@ public struct BinanceTimeRequest: BinanceRequest {
     public static let endpoint = "v1/time"
     public static let method: HTTPMethod = .get
 
+    public init () {}
+    
     public struct Response: Decodable {
         public let localTime = Date()
         public let serverTime: Date
@@ -238,6 +242,8 @@ public struct BinanceAllBookTickersRequest: BinanceRequest, Codable {
     public static let endpoint = "v1/ticker/allBookTickers"
     public static let method: HTTPMethod = .get
 
+    public init () {}
+    
     public struct Element: Codable {
         public let bidPrice: Decimal
         public let bidQuantity: Decimal
@@ -284,7 +290,7 @@ public struct BinanceAllBookTickersRequest: BinanceRequest, Codable {
 public struct BinanceNewOrderRequest: BinanceSignedRequest, Codable {
     public static let endpoint = "v3/order"
     public static let method = HTTPMethod.post
-
+    
     public let symbol: String
     public let side: BinanceOrderSide
     public let type: BinanceOrderType
