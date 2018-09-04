@@ -36,7 +36,6 @@ class BinanceApiTests: XCTestCase {
     }
     
     func testSignature() {
-        // let apiKey = "vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A"
         let secretKey = "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
         let message = "symbol=LTCBTC&side=BUY&type=LIMIT&timeInForce=GTC&quantity=1&price=0.1&recvWindow=5000&timestamp=1499827319559"
         
@@ -197,80 +196,80 @@ class BinanceApiTests: XCTestCase {
         }
     }
 
-    /*func testNewOrder() {
-        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
-        let symbol = "ETHBTC"
-        let request = BinanceNewOrderRequest(
-            symbol: symbol,
-            side: .sell,
-            type: .limit,
-            quantity: Decimal(string: "0.001")!,
-            price: Decimal(string: "1.1")!, timeInForce: .goodTilCancelled)
+//    func testNewOrder() {
+//        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
+//        let symbol = "ETHBTC"
+//        let request = BinanceNewOrderRequest(
+//            symbol: symbol,
+//            side: .sell,
+//            type: .limit,
+//            quantity: Decimal(string: "0.001")!,
+//            price: Decimal(string: "1.1")!, timeInForce: .goodTilCancelled)
+//
+//        asyncTest("new order") { (expectation) in
+//            api.send(request) { response in
+//                XCTAssertTrue(response.result.isSuccess)
+//                XCTAssertNotNil(response.result.value)
+//                let value = response.result.value!
+//                XCTAssertEqual(value.symbol, symbol)
+//                print("Created new order #\(value.orderId)")
+//                expectation.fulfill()
+//            }
+//        }
+//    }
 
-        asyncTest("new order") { (expectation) in
-            api.send(request) { response in
-                XCTAssertTrue(response.result.isSuccess)
-                XCTAssertNotNil(response.result.value)
-                let value = response.result.value!
-                XCTAssertEqual(value.symbol, symbol)
-                print("Created new order #\(value.orderId)")
-                expectation.fulfill()
-            }
-        }
-    }*/
-    
-    func testTestNewOrder() {
-        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
-        let symbol = "ETHBTC"
-        let request = BinanceTestNewOrderRequest(
-            symbol: symbol,
-            side: .buy,
-            type: .market,
-            quantity: Decimal(string: "1.1")!)
+//    func testTestNewOrder() {
+//        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
+//        let symbol = "ETHBTC"
+//        let request = BinanceTestNewOrderRequest(
+//            symbol: symbol,
+//            side: .buy,
+//            type: .market,
+//            quantity: Decimal(string: "1.1")!)
+//
+//        asyncTest("test new order") { (expectation) in
+//            api.send(request) { response in
+//                XCTAssertTrue(response.result.isSuccess)
+//                XCTAssertNotNil(response.result.value)
+//                let _ = response.result.value!
+//                expectation.fulfill()
+//            }
+//        }
+//    }
 
-        asyncTest("test new order") { (expectation) in
-            api.send(request) { response in
-                XCTAssertTrue(response.result.isSuccess)
-                XCTAssertNotNil(response.result.value)
-                let _ = response.result.value!
-                expectation.fulfill()
-            }
-        }
-    }
-
-    func testQueryOrder() {
-        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
-        let request = BinanceQueryOrderRequest(symbol: self.querySymbol, orderId: self.queryOrderId)
-
-        asyncTest("query order") { (expectation) in
-            api.send(request) { response in
-                XCTAssertTrue(response.result.isSuccess)
-                XCTAssertNotNil(response.result.value)
-                let order = response.result.value!
-                print(order)
-                expectation.fulfill()
-            }
-        }
-    }
-
-    /*func testCancelOrder() {
-        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
-        let symbol = "ETHBTC"
-        let orderId = UInt64(11691907)
-        let request = BinanceCancelOrderRequest(symbol: symbol, orderId: orderId)
-
-        asyncTest("cancel order") { (expectation) in
-            api.send(request) { response in
-                XCTAssertTrue(response.result.isSuccess)
-                XCTAssertNotNil(response.result.value)
-                let value = response.result.value!
-                XCTAssertEqual(value.symbol, symbol)
-                XCTAssertEqual(value.orderId, orderId)
-                print("Cancelled order #\(value.orderId)")
-                expectation.fulfill()
-            }
-        }
-    }*/
+//    func testQueryOrder() {
+//        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
+//        let request = BinanceQueryOrderRequest(symbol: self.querySymbol, orderId: self.queryOrderId)
+//
+//        asyncTest("query order") { (expectation) in
+//            api.send(request) { response in
+//                XCTAssertTrue(response.result.isSuccess)
+//                XCTAssertNotNil(response.result.value)
+//                let order = response.result.value!
+//                print(order)
+//                expectation.fulfill()
+//            }
+//        }
+//    }
+//
+//    func testCancelOrder() {
+//        let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)
+//        let symbol = "ETHBTC"
+//        let orderId = UInt64(11691907)
+//        let request = BinanceCancelOrderRequest(symbol: symbol, orderId: orderId)
+//
+//        asyncTest("cancel order") { (expectation) in
+//            api.send(request) { response in
+//                XCTAssertTrue(response.result.isSuccess)
+//                XCTAssertNotNil(response.result.value)
+//                let value = response.result.value!
+//                XCTAssertEqual(value.symbol, symbol)
+//                XCTAssertEqual(value.orderId, orderId)
+//                print("Cancelled order #\(value.orderId)")
+//                expectation.fulfill()
+//            }
+//        }
+//    }
 
     func testOpenOrders() {
         let api = BinanceApi(apiKey: self.apiKey, secretKey: self.secretKey)

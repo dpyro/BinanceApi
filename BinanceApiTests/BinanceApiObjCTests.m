@@ -176,61 +176,61 @@
     [self waitForExpectations:@[expectation] timeout:self.timeout];
 }
 
-- (void)testTestNewOrder {
-    NSString *symbol = @"ETHBTC";
-    NSDecimalNumber *quantity = [NSDecimalNumber decimalNumberWithString:@"1.0"];
+//- (void)testTestNewOrder {
+//    NSString *symbol = @"ETHBTC";
+//    NSDecimalNumber *quantity = [NSDecimalNumber decimalNumberWithString:@"1.0"];
+//
+//    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"all book tickers"];
+//
+//    BinanceApi *api = [[BinanceApi alloc] initWithApiKey:self.apiKey secretKey:self.secretKey];
+//    [api testNewOrderWithSymbol:symbol side:BinanceOrderSide.Buy type:BinanceOrderType.Market timeInForce:nil quantity:quantity price:nil newClientOrderId:nil stopPrice:nil icebergQuantity:nil responseHandler:^(NSError * _Nullable error) {
+//        XCTAssertNil(error);
+//
+//        [expectation fulfill];
+//    }];
+//
+//    [self waitForExpectations:@[expectation] timeout:self.timeout];
+//}
 
-    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"all book tickers"];
-
-    BinanceApi *api = [[BinanceApi alloc] initWithApiKey:self.apiKey secretKey:self.secretKey];
-    [api testNewOrderWithSymbol:symbol side:BinanceOrderSide.Buy type:BinanceOrderType.Market timeInForce:nil quantity:quantity price:nil newClientOrderId:nil stopPrice:nil icebergQuantity:nil responseHandler:^(NSError * _Nullable error) {
-        XCTAssertNil(error);
-
-        [expectation fulfill];
-    }];
-
-    [self waitForExpectations:@[expectation] timeout:self.timeout];
-}
-
-- (void)testQueryOrder {
-    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"query order"];
-
-    BinanceApi *api = [[BinanceApi alloc] initWithApiKey:self.apiKey secretKey:self.secretKey];
-    [api queryOrderWithSymbol:self.querySymbol orderId:self.queryOrderId originalClientOrderId:nil responseHandler:^(NSDictionary<NSString *,id> * _Nullable result, NSError * _Nullable error) {
-        XCTAssertNil(error);
-        XCTAssert(result);
-
-        XCTAssert([(NSString *)[result valueForKey:@"symbol"] isEqualToString:self.querySymbol]);
-        XCTAssertEqual([(NSNumber *)[result valueForKey:@"orderId"] unsignedLongLongValue], self.queryOrderId);
-
-        NSLog(@"%@: %@", [result valueForKey:@"symbol"], [result valueForKey:@"status"]);
-
-        [expectation fulfill];
-    }];
-
-    [self waitForExpectations:@[expectation] timeout:self.timeout];
-}
+//- (void)testQueryOrder {
+//    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"query order"];
+//
+//    BinanceApi *api = [[BinanceApi alloc] initWithApiKey:self.apiKey secretKey:self.secretKey];
+//    [api queryOrderWithSymbol:self.querySymbol orderId:self.queryOrderId originalClientOrderId:nil responseHandler:^(NSDictionary<NSString *,id> * _Nullable result, NSError * _Nullable error) {
+//        XCTAssertNil(error);
+//        XCTAssert(result);
+//
+//        XCTAssert([(NSString *)[result valueForKey:@"symbol"] isEqualToString:self.querySymbol]);
+//        XCTAssertEqual([(NSNumber *)[result valueForKey:@"orderId"] unsignedLongLongValue], self.queryOrderId);
+//
+//        NSLog(@"%@: %@", [result valueForKey:@"symbol"], [result valueForKey:@"status"]);
+//
+//        [expectation fulfill];
+//    }];
+//
+//    [self waitForExpectations:@[expectation] timeout:self.timeout];
+//}
 
 
-- (void)testCancelOrder {
-    NSString *symbol = @"BNBETH";
-    UInt64 orderId = 10000;
-
-    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"cancel order"];
-
-    BinanceApi *api = [[BinanceApi alloc] initWithApiKey:self.apiKey secretKey:self.secretKey];
-    [api cancelOrderWithSymbol:symbol orderId:orderId originalClientOrderId:nil newClientOrderId:nil responseHandler:^(NSDictionary<NSString *,id> * _Nullable result, NSError * _Nullable error) {
-        XCTAssertNil(error);
-        XCTAssert(result);
-
-        UInt64 orderId = [[result valueForKey:@"orderId"] unsignedLongLongValue];
-        NSLog(@"Cancelled order %llu", orderId);
-
-        [expectation fulfill];
-    }];
-
-    [self waitForExpectations:@[expectation] timeout:self.timeout];
-}
+//- (void)testCancelOrder {
+//    NSString *symbol = @"BNBETH";
+//    UInt64 orderId = 10000;
+//
+//    XCTestExpectation *expectation = [[XCTestExpectation alloc] initWithDescription:@"cancel order"];
+//
+//    BinanceApi *api = [[BinanceApi alloc] initWithApiKey:self.apiKey secretKey:self.secretKey];
+//    [api cancelOrderWithSymbol:symbol orderId:orderId originalClientOrderId:nil newClientOrderId:nil responseHandler:^(NSDictionary<NSString *,id> * _Nullable result, NSError * _Nullable error) {
+//        XCTAssertNil(error);
+//        XCTAssert(result);
+//
+//        UInt64 orderId = [[result valueForKey:@"orderId"] unsignedLongLongValue];
+//        NSLog(@"Cancelled order %llu", orderId);
+//
+//        [expectation fulfill];
+//    }];
+//
+//    [self waitForExpectations:@[expectation] timeout:self.timeout];
+//}
 
 
 - (void)testOpenOrders {

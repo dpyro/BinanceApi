@@ -279,4 +279,4 @@ api.send(request) { response in
 
 ## Testing & Examples
 
-Both an Objective-C and Swift test suite are included. You can use the test code as an example for integration this library. You will need to insert your own apikey, secretkey, and order to query to test the signed endpoints. The new order (not the test version) and cancel order endpoints in the test suite *will* execute on the market but are disabled by default.
+Both an Objective-C and Swift test suite are included. You can use the test code as an example for integration this library. You will need to insert your own `apiKey`, `secretKey`, and `orderId` to query to test the signed endpoints. Mutable tests are commented (disabled) by default. You should disable withdrawal and optionally trading access for the API key before using it. You should also revoke the API key when you are done testing.
